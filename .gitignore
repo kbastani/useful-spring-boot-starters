@@ -141,3 +141,8 @@ modules.xml
 # Sonarlint plugin
 
 # End of https://www.gitignore.io/api/intellij,intellij+all
+
+# Project exclude paths
+/spring-boot-starter-aws-lambda/target/
+/spring-boot-starter-github/target/
+/spring-cloud-function-adapter-aws/target/

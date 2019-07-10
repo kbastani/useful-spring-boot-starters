@@ -2,7 +2,6 @@ package amazon.aws;
 
 import org.junit.After;
 import org.junit.Test;
-import org.springframework.boot.test.util.EnvironmentTestUtils;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 
@@ -35,7 +34,6 @@ public class AmazonConfigurationTest {
 
     private void load(Class<?> config, String... environment) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        EnvironmentTestUtils.addEnvironment(applicationContext, environment);
         applicationContext.register(config);
         applicationContext.register(AmazonAutoConfiguration.class);
         applicationContext.refresh();

@@ -5,7 +5,7 @@
 
     <artifactId>spring-boot-starter-github</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>spring-boot-starter-github</name>
     <description>Spring Boot starter for GitHub integration</description>

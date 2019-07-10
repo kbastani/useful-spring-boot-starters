@@ -16,17 +16,16 @@
 
 package org.springframework.cloud.function.adapter.aws;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.util.function.Function;
-
 import org.junit.Test;
-
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
-import org.springframework.cloud.function.context.ContextFunctionCatalogAutoConfiguration;
+import org.springframework.cloud.function.context.config.ContextFunctionCatalogAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.function.Function;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -16,22 +16,20 @@
 
 package org.springframework.cloud.function.adapter.aws;
 
+import org.junit.After;
+import org.junit.Test;
+import org.springframework.cloud.function.context.config.ContextFunctionCatalogAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import reactor.core.publisher.Flux;
+
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import org.junit.After;
-import org.junit.Test;
-
-import org.springframework.cloud.function.context.ContextFunctionCatalogAutoConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-
 import static org.assertj.core.api.Assertions.assertThat;
-
-import reactor.core.publisher.Flux;
 
 /**
  * @author Dave Syer

@@ -19,9 +19,10 @@ package org.springframework.cloud.function.adapter.aws;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.cloud.function.context.FunctionInspector;
-import org.springframework.cloud.function.registry.FunctionCatalog;
+import org.springframework.cloud.function.context.FunctionCatalog;
+import org.springframework.cloud.function.context.catalog.FunctionInspector;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.util.ClassUtils;
 import reactor.core.publisher.Flux;
@@ -87,7 +88,7 @@ public class SpringFunctionInitializer implements Closeable {
 		logger.info("Initializing: " + configurationClass);
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(
 				configurationClass);
-		ConfigurableApplicationContext context = builder.web(false).run();
+		ConfigurableApplicationContext context = builder.web(WebApplicationType.REACTIVE).run();
 		context.getAutowireCapableBeanFactory().autowireBean(this);
 		String name = context.getEnvironment().getProperty("function.name");
 		boolean defaultName = false;
@@ -99,19 +100,19 @@ public class SpringFunctionInitializer implements Closeable {
 			this.function = context.getBean(name, Function.class);
 		}
 		else {
-			this.function = this.catalog.lookupFunction(name);
+			this.function = this.catalog.lookup(name);
 			this.name = name;
 			if (this.function == null) {
 				if (defaultName) {
 					name = "consumer";
 				}
-				this.consumer = this.catalog.lookupConsumer(name);
+				this.consumer = this.catalog.lookup(name);
 				this.name = name;
 				if (this.consumer == null) {
 					if (defaultName) {
 						name = "supplier";
 					}
-					this.supplier = this.catalog.lookupSupplier(name);
+					this.supplier = this.catalog.lookup(name);
 					this.name = name;
 				}
 			}
